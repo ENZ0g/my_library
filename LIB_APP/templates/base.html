@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Library{% endblock %}</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+{% block style %}{% endblock %}
+<body>
+    <div class="container">
+        <nav class="nav navbar-dark bg-info fixed-top">
+          <a class="nav-item nav-link text-white" href="/">Список книг</a>
+          <a class="nav-item nav-link text-white" href="/new_book">Добавить книгу</a>
+          <a class="nav-item nav-link text-white" href="/authors">Авторы</a>
+          <a class="nav-item nav-link text-white" href="/redactions">Издательства</a>
+          <a class="nav-item nav-link text-white" href="/readers">Читатели</a>
+        </nav>
+        <main style="margin-top: 40px;">
+            {% block main %}
+            {% endblock %}
+        </main>
+    </div>
+{% block JS %}
+{% endblock %}
+</body>
+</html>

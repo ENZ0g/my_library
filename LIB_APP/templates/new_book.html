@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}Новая книга{% endblock %}
+
+{% block style %}
+
+<style>
+    .errorlist {
+        display: inline-block;
+        background-color: rgba(220, 53, 69, 0.7);
+        margin-top: 10px;
+        border-radius: 2px;
+        list-style: none;
+        padding-right: 35px;
+    }
+
+    .btn {
+        margin: 10px 0;
+    }
+
+    .helptext {
+        color: #a2a9b0;
+    }
+
+</style>
+
+{% endblock %}
+
+{% block main %}
+
+<form method="post" enctype="text/plain">
+    {% csrf_token %}
+    {{ form.as_p }}
+  <input type="submit" value="Сохранить" class="btn btn-primary btn-block"/>
+</form>
+
+{% endblock %}

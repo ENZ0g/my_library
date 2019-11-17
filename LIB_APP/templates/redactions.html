@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block title %}Редакции{% endblock %}
+
+{% block style %}
+<style>
+    .author-field {
+        width: 30%;
+    }
+
+    .btn {
+        margin: 10px 0;
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+
+
+<a class="btn btn-outline-primary"
+   data-toggle="collapse"
+   href="#collapseForm"
+   role="button"
+   aria-expanded="false"
+   aria-controls="collapseForm">Добавить издательство</a>
+
+
+<div class="collapse" id="collapseForm" style="margin-top: 10px">
+    <div class="card card-body">
+        <form class="form-group" method="post" enctype="text/plain">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="submit" value="Сохранить" class="btn btn-outline-primary">
+        </form>
+    </div>
+</div>
+
+        <ul class="list-group list-group-flush">
+            {% for redaction in redactions %}
+
+            <li class="list-group-item">
+
+                <span class="h5">{{ redaction.name }}</span>
+                <span class="badge badge-info badge-pill">{{ redaction.books|length }}</span>
+                <table class="table table-striped table-sm">
+
+                    {% for book in redaction.books %}
+                        <tr>
+                            <td class="author-field">{{ book.author }}</td>
+                            <td>{{ book.title }}</td>
+                        </tr>
+
+                    {% endfor %}
+                </table>
+
+            </li>
+
+            {% endfor %}
+        </ul>
+
+{% endblock %}
+
+{% block JS %}
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+{% endblock %}
