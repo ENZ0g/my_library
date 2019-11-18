@@ -6,6 +6,7 @@ from django.db.models import Sum
 from django.urls import reverse_lazy
 from datetime import datetime as dt
 from django.http.response import HttpResponseRedirect
+from django.template import RequestContext
 
 
 def books_list(request):
@@ -97,7 +98,7 @@ def author_list(request):
                                error='Введите 2 латинские буквы')
                 data = {'authors': Author.objects.all(),
                         'form': form}
-                return HttpResponse(template.render(data, request))
+                return HttpResponse(template.render(data, RequestContext(request)))
             Author.objects.create(full_name=full_name,
                                   birth_year=birth_year,
                                   country=country)
@@ -105,7 +106,7 @@ def author_list(request):
         else:
             data = {'authors': Author.objects.all(),
                     'form': form}
-            return HttpResponse(template.render(data, request))
+            return HttpResponse(template.render(data, RequestContext(request)))
     else:
         data = {'authors': Author.objects.all(),
                 'form': AuthorForm()}
