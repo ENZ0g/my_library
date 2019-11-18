@@ -110,7 +110,7 @@ def author_list(request):
     else:
         data = {'authors': Author.objects.all(),
                 'form': AuthorForm()}
-        return HttpResponse(template.render(data, request))
+        return HttpResponse(template.render(data, RequestContext(request)))
 
 
 def readers_list(request):
