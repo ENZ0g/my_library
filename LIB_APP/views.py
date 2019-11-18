@@ -86,6 +86,7 @@ def author_list(request):
     template = loader.get_template('authors.html')
 
     if request.method == 'POST':
+        print('csrf---', request.POST)
         form = AuthorForm(request.POST)
         if form.is_valid():
             full_name = request.POST['full_name']
