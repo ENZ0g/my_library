@@ -98,7 +98,7 @@ def author_list(request):
                                error='Введите 2 латинские буквы')
                 data = {'authors': Author.objects.all(),
                         'form': form}
-                return render(request, template, data)
+                return HttpResponse(template.render(data, request))
             Author.objects.create(full_name=full_name,
                                   birth_year=birth_year,
                                   country=country)
@@ -106,11 +106,10 @@ def author_list(request):
         else:
             data = {'authors': Author.objects.all(),
                     'form': form}
-            return render(request, template, data)
     else:
         data = {'authors': Author.objects.all(),
                 'form': AuthorForm()}
-        return render(request, template, data)
+    return HttpResponse(template.render(data, request))
 
 
 def readers_list(request):
