@@ -6,7 +6,6 @@ from django.db.models import Sum
 from django.urls import reverse_lazy
 from datetime import datetime as dt
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import render
 
 
 def books_list(request):
@@ -156,4 +155,3 @@ def new_book(request):
     else:
         data = {'form': BookForm()}
     return HttpResponse(template.render(data, request))
-

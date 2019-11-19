@@ -39,7 +39,7 @@
 
 <div class="collapse show" id="collapseForm" style="margin-top: 10px">
     <div class="card card-body">
-        <form class="form-group" method="post" enctype="text/plain">
+        <form class="form-group" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
 
@@ -52,7 +52,7 @@
 
 <div class="collapse" id="collapseForm" style="margin-top: 10px">
     <div class="card card-body">
-        <form class="form-group" method="post" enctype="text/plain">
+        <form class="form-group" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.as_p }}
 
