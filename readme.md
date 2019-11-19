@@ -1,3 +1,3 @@
 # Library app
 
-try it
+[Try it](https://lib-rary.herokuapp.com/)
